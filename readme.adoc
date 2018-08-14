@@ -1,0 +1,39 @@
+= VTiger CRM Custom Templates
+This project was started due to the problems I had customizing VTiger CRM print & email templates. 
+The goal is to create a simple & clean code for creating PDF / Print templates & email templates. CSS & HTML are separated then combined using css-inliner tools such as https://foundation.zurb.com/emails/inliner-v2.html[Zurb Foundation CSS Inliner].
+
+== Features & Notes:
+- PDF/Print & email templates for VTiger CRM 7 (tested on the hosted cloud version)
+- Templates are designed for use in Australia. Other formats might be developed upon request.
+
+
+== General To Do List:
+- Create a build system webpack or other automation tools to
+**  auto-inline-css.
+** Auto convert SASS into CSS.
+- Find or Create a simple print CSS framework.
+- 
+
+== PDF / Print Templates
+=== To Do:
+- Apply the 'Print Template CSS Coding Convention " described below.
+- Use the tag `<thead>` and `<tfoot>` in the template when needed.
+
+=== Notes:
+- For CSS style to work, each element must be targeted directly with CSS. CSS inheritance does not't work as expected in the PDF generator provided by VTiger.
+- Widths for nested tables DO NO WORK. Only root level tables (body > table ) follow the set widths. Other styling will work, for nested tables but not widths !
+
+
+
+
+== Email Templates
+=== To Do
+
+=== Notes:
+
+
+
+== Print Template CSS Coding Convention 
+- Each table should use the class name format "name-section" . e.g: account-info-section  or items-section
+- Each row should use the class name format "name-row" . e.g: labels-row or values-row
+- Each cell can use the classes "label" or 'value' in addition to other necessary classes.

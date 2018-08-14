@@ -1,0 +1,162 @@
+body{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    min-height:135px;
+}
+
+img{
+    max-width: 100%;
+}
+table{
+    border-collapse: collapse;
+    font-family: sans-serif;
+    width: 100%;
+    border-spacing: 1px;
+    table-layout: fixed;
+    /*margin-bottom: 50px;*/
+}
+table tr{
+
+}
+table td{
+    vertical-align: top;
+    padding: 10px;
+}
+p{
+    margin: 7px 0;
+}
+
+/**
+* ********************************************
+* Columns system
+* ********************************************
+**/
+
+.col-100 {
+    width:100%;
+}
+.col-75 {
+    width:75%;
+}
+.col-66 {
+    width:66.6666%;
+}
+.col-50 {
+    width: 50%;
+}
+.col-33 {
+    width:33.3333%;
+}
+.col-25 {
+    width:25%;
+}
+
+/**
+* ********************************************
+* Table default styles
+* ********************************************
+**/
+
+table.style-primary{
+    border: 1px solid #ccc;
+    margin-bottom: 1cm;
+}
+table.style-primary > tbody > tr{
+    border-bottom: 1px solid #ccc;
+}
+table.style-primary > tbody > tr > td{
+    background-color:   #fff;
+    color: #555;
+
+}
+table.style-primary > tbody > tr.header{
+
+}
+table.style-primary  > tbody > tr.header > td{
+    background-color: #4a78db;
+    color: #fff;
+    font-weight: bold;
+    border-right: 1px solid #fff;
+    vertical-align: central;
+}
+table.style-primary > tbody > tr.footer{
+
+}
+table.style-primary > tbody > tr.footer >td{
+    background-color: #fafafa;
+
+}
+
+
+
+/**
+* ********************************************
+* Custom table.style-primary styling
+* ********************************************
+**/
+
+/* Items table styles */
+table.style-primary.items > tbody > tr.item {
+}
+table.style-primary.items > tbody > tr.item > td{
+    /*border-right: 1px dotted #ddd;*/
+    padding: 10px;
+    border: 1px dotted #eee;
+    font-size: 12px;
+}
+table.style-primary.items > tbody > tr.item-comment > td{
+    color: #888;
+    border: 1px dotted #ddd;
+    border-bottom: 1px solid #ccc;
+}
+
+table.style-primary.items > tbody > tr.item-comment > td .totals-wrapper {
+    text-align: right;
+}
+table.style-primary.items > tbody > tr.item-comment > td.totals-wrapper table.totals {
+    width: 50%;
+    text-align: right;
+}
+table.style-primary.items > tbody > tr.item-comment > td.totals-wrapper table.totals td{
+    width:  50%;
+    border-left: 1px solid #ddd;
+
+}
+
+/* Totals table styles*/
+table.totals-and-payments-section .totals .balance-row .label{
+    font-weight: bold;
+    font-size: 16px
+}
+table.totals-and-payments-section .totals .balance-row .value{
+    color: orange;
+    font-weight: bold;
+    font-size: 16px
+}
+/**
+* ********************************************
+* Other Custom CSS
+* ********************************************
+**/
+.company-logo-wrapper img{
+    max-width:8cm;
+}
+
+.document-info-section {
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+.document-info-section td{
+    vertical-align: central;
+}
+.document-info-section td.document-type{
+    text-align: center;
+    background-color:  #aaa;    
+    color:#fff;
+    font-size: 18px;
+}
+.a4Div {
+    width: 210mm;
+    height: 290mm;
+    margin: 0 auto;
+}

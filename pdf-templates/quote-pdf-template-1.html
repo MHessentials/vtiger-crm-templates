@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /><!-- literal -->
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <!-- /literal -->
+        <link href="layouts/v7/skins/vtiger/custom_ckeditor_fonts.css" id="fontStyle" rel="stylesheet" type="text/css" />
+    </head>
+    <body _vimium-has-onclick-listener="" style="height: auto; min-height: auto;">
+        <table class="letter-head-section">
+            <tbody>
+
+                <tr>
+                    <td class="col-50 company-logo-wrapper">
+                        <img alt="" src="https://michaelhabibname.od2.vtiger.com/test/logo/mh_logo_cropped.png"  />
+                    </td>
+                    <td class="col-50 company-contact-info-wrapper">
+                        <p><a href="http://{$RECORD.company_website}" target="_blank">{$RECORD.company_website}</a></p>
+                        <p>
+                            <a href="http://{$RECORD.company_linkedin}" target="_blank">LinkedIn</a>
+                            <a href="http://{$RECORD.company_facebook}" target="_blank">Facebook</a>
+                        </p>
+                        <p><a href="tel:{$RECORD.company_phone}" target="_blank">{$RECORD.company_phone}</a></p>
+                        <p>
+                            {$RECORD.company_organizationname}<br />
+                            {$RECORD.company_address}, 
+                            {$RECORD.company_city}, 
+                            {$RECORD.company_state},<br />
+                            {$RECORD.company_country}&nbsp; {$RECORD.company_code}
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- end table.letter-head-section-->
+
+        <table class="document-info-section">
+            <tr>
+                <td class="col-33 document-type">
+                    Quote
+                </td>
+                <td class="col-33">
+                    <p class="document-number">QUOTE: {$RECORD.quote_no}</p>
+                </td>
+                <td class="col-33">
+                    <!--<p>Issued Date: {$RECORD.custom_currentdate}</p>-->
+                    <p>Valid Until : {$RECORD.validtill}</p>
+                </td>
+            </tr>
+        </table>
+        <table class="account-info-section style-primary">
+            <tbody>
+
+                <tr class="header">
+                    <td class="col-50">
+                        <p class="company-name-label">Company Name</p>
+                    </td>
+                    <td class="col-50">
+                        <p class="contact-name-label">Contact Name</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-50">
+                        <p>{$RECORD.account_id_accountname}</p>
+                    </td>
+                    <td class="col-50">
+                        <p class="contact-name">{$RECORD.contact_id_firstname}&nbsp;{$RECORD.contact_id_lastname}</p>
+                    </td>
+                </tr>
+                <tr class="header">
+                    <td class="col-50">
+                        <p class="company-name-label">Billing Address</p>
+                    </td>
+                    <td class="col-50">
+                        <p class="contact-name-label">Shipping Address</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {$RECORD.bill_street} 
+                        {$RECORD.bill_city},
+                        {$RECORD.bill_code}
+                        {$RECORD.bill_country}
+                    </td>
+                    <td>
+                        {$RECORD.ship_street}
+                        {$RECORD.ship_city}, 
+                        {$RECORD.ship_code}
+                        {$RECORD.ship_country}
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- end table.account-info-section-->
+
+        <table class="items style-primary">
+
+            <tbody>
+                <tr class="header">
+                    <td><strong>Item Code</strong></td>
+                    <td ><strong>Item Name</strong></td>
+                    <td ><strong>Quantity</strong></td>
+                    <td ><strong>Price</strong></td>
+                    <td ><strong>Item Total</strong></td>
+                    <td ><strong>Discount</strong></td>
+                    <td ><strong>Total After Discount</strong></td>
+                    <td ><strong>Total</strong></td>
+                </tr>
+
+                <!-- foreach item=LINEITEM from=$RECORD.LINEITEMS -->
+                <tr class="item">
+                    <td >{$LINEITEM.hdnProductcode}</td>
+                    <td >{$LINEITEM.productName}</td>
+                    <td >{$LINEITEM.quantity}</td>
+                    <td >{$RECORD.currency_symbol}{$LINEITEM.listprice}</td>
+                    <td >{$RECORD.currency_symbol}{$LINEITEM.productTotal}</td>
+                    <td >{$RECORD.currency_symbol}{$LINEITEM.discount_amount}&nbsp;&nbsp;({$LINEITEM.discount_percent} %)</td>
+                    <td >{$RECORD.currency_symbol}{$LINEITEM.totalAfterDiscount}</td>
+                    <td >{$RECORD.currency_symbol}{$LINEITEM.netPrice}</td>
+                </tr>
+                <tr class="item-comment">
+                    <td></td>
+                    <td colspan="7" >
+                        <span class="tree-view-sub-item"> </span>{$LINEITEM.comment}
+                    </td> 
+                </tr>
+                <!-- /foreach -->
+
+            </tbody>
+        </table>
+        <!-- end table.items -->
+        <table class="totals-and-payments-section">
+            <tbody>
+                <tr>
+                    <td class="col-50 payments-wrapper">
+                        <table class="payments-section style-primary PT_REL_Payments_BLOCK">
+                            <tbody>
+                                <tr class="header">             
+                                    <td colspan="5">
+                                        Payments Received 
+                                    </td>
+                                </tr>
+                                <tr class="header">                           
+                                    <td><strong>Payment No</strong></td>
+                                    <td><strong>Mode</strong></td>
+                                    <td><strong>Status</strong></td>
+                                    <td><strong>Date received</strong></td>
+                                    <td><strong>Amount</strong></td>
+                                </tr>
+                                <!-- foreach item = REL_Payments from = $RECORD.REL_RECORDS.Payments -->
+                                <tr class="payment-details">
+                                    <td>{$REL_Payments.paymentsno}</td>
+                                    <td>{$REL_Payments.paymentsmode}</td>
+                                    <td>{$REL_Payments.paymentsstatus}</td>
+                                    <td>{$REL_Payments.datereceived}</td>
+                                    <td>{$REL_Payments.amount_currency_value}</td>
+                                </tr>
+                                <!-- /foreach -->
+                            </tbody>
+                        </table>
+                        <!-- end table.payments-section-->
+
+                    </td>
+                    <td class="col-50 totals-wrapper" >
+                        <table class="totals" align="right">
+                            <tr>
+                                <td class="col-50">Items Total</td>
+                                <td class="col-50">{$RECORD.currency_symbol}{$RECORD.hdnSubTotal}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping &amp; Handling Charges</td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.hdnS_H_Amount}</td>
+                            </tr>
+                            <tr>
+                                <td>Total - Pre Tax </td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.pre_tax_total}</td>
+                            </tr>
+                            <tr>
+                                <td>Tax / GST({$RECORD.tax_totalpercent}%)</td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.tax_totalamount}</td>
+                            </tr>
+                            <!--                            <tr>
+                                                            <td>Shipping &amp; Handling Tax total amount({$RECORD.shtax_totalpercent} %)</td>
+                                                            <td >${$RECORD.shtax_totalamount}</td>
+                                                        </tr>-->
+                            <tr>
+                                <td>Sum of Individual Item Discounts</td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.individualDiscountsSum}</td>
+                            </tr>
+                            <tr>
+                                <td>Additional Discount({$RECORD.discount_percentage_final}%)</td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.discountTotal_final}</td>
+                            </tr>
+                            <tr>
+                                <td>Adjustment</td>
+                                <td >{$RECORD.currency_symbol}{$RECORD.txtAdjustment}</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td class="label">Total (Before Payments)</td>
+                                <td class="value">{$RECORD.currency_symbol}{$RECORD.hdnGrandTotal}</td>
+                            </tr>
+                            <tr class="balance-row">
+                                <td class="label">Total Due</td>
+                                <td class="value">{$RECORD.currency_symbol}{$RECORD.balance}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--totals-and-payments-section-->
+
+        <table class="description style-primary">
+            <tbody>
+
+                <tr class="header">                           
+                    <td class="col-100 ">
+                        <p>Description</p>
+
+                    </td>
+                <tr>                           
+                    <td class="col-100 ">
+                        <p>{$RECORD.description}</p>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- end table.description-->
+
+
+        <table class="payment-options style-primary">
+            <tbody>
+
+                <tr class="header">                           
+                    <td class="col-50 " colspan="2">
+                        <p>Payment Options</p>
+                    </td>
+                </tr>
+                <tr>                           
+                    <td class="col-50 ">
+                        <p>
+                            <u>Bank Transfer:</u>
+                        </p>
+                        <p>
+                            Account Name: Michael Habib<br />
+                            BSB : 112879<br />
+                            Acc No#: 419919999
+                        </p>
+                    </td>
+                    <td class="col-50 ">
+                        <p>
+                            <u>Online Payment:</u>
+                        </p>
+                        <p>
+                            Online payments will be available soon ...
+                        </p>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- end table.payment-options-->
+
+
+
+
+        <table class="terms-and-conditions style-primary">
+            <tbody>
+
+                <tr class="header">                           
+                    <td class="col-100 ">
+                        <p>
+                            Terms and Conditions
+                        </p>    
+                    </td>
+
+                </tr>
+                <tr>                           
+                    <td class="col-100 ">
+
+                        <p>    
+                            {$RECORD.terms_conditions}
+                        </p>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- end table.terms-and-conditions-->
+
+
+
+        <!-- end table.footer-section-->
+
+    </body>
+</html>
